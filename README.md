@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(devtools)
 install_github("rogerjbos/svm_recession)
-library(svm_recession)
+library(svm.recession)
 
 ### Data and sources
 
@@ -31,24 +31,48 @@ where each of the four independant variables includes the current value plus the
 
 ### Running the example
 
+```
 
-```{r}
-library(svm_recession)
-best_cost <- 1120
-lag <- 12
+library(svm.recession)
+# load the sample data (should happen automatically -- object named `dat`)
+
+# Set best_cost to NA to determine best_cost
+best_cost <- 1120 
+# Lag the independent variables by 12 months so there is no look ahead bias
+mylag <- 12
+# Determine which factors to include in the model
 factors <- "vintage|fwdstate|payems|sp500|yld_curve|man_prod"
+
+# Define `fwdstate`
+dat[, fwdstate := ifelse(recession==1, 1, -1)]
 fmla = formula(fwdstate ~ .)
 cols <- grep(factors, names(dat), value = TRUE)
 mydat <- dat[, ..cols]
-b1 <- bt(mydat = mydat, fmla = fmla, mylag = 12, best_cost = NA, flip = TRUE)
+
+# Run the backtest
+b1 <- bt(mydat = mydat, fmla = fmla, mylag = mylag, best_cost = best_cost, flip = TRUE)
+
 # Model error rate
 b1$error
+
 # Investment strategy preformance
 b1$stats  
+
 # Model best cost
 b1$best_cost
+
 # First few predictions
 tail(b1$ans)
+
+# Plot the results
+layout(1:2)
+plot(b1$ans$fwdstate ~ b1$ans$vintage, type='l', lty='dotted', 
+     main='NBER Recessions', xlab='', ylab='Recessions')
+lines(b1$ans$forecast ~ b1$ans$vintage, type='s', col='red')
+plot(b1$ans$prob ~ b1$ans$vintage, type='l', col='red',
+      main='Forecast Recession Probabilities', ylab='Probability')
+lines(b1$ans$fwdstate ~ b1$ans$vintage, type='s')
+
 ```
 
 ### Investment Strategy
