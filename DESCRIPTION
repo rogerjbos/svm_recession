@@ -4,10 +4,10 @@ Title: Forecasting recession using Support Vector Machines (SVM)
 Version: 0.0.1
 Author: Roger J. Bos
 Maintainer: Roger J. Bos <roger.bos@gmail.com>
-Description: Forecasting recession using Support Vector Machines (SVM)
+Description: Example code for forecasting recession using Support Vector Machines (SVM) and testing out an investment strategy of investing in the index during  (predicted) non-recession months and moving to cash during (predicted) recession months.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Depends: data.table
-Imports: PerformanceAnalytics, e1071
-RoxygenNote: 6.1.1
+Depends: data.table, e1071, PerformanceAnalytics
+Imports: 
+RoxygenNote: 7.0.1
