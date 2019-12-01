@@ -1,0 +1,13 @@
+Package: svm.recession
+Type: Package
+Title: Forecasting recession using Support Vector Machines (SVM)
+Version: 0.0.1
+Author: Roger J. Bos
+Maintainer: Roger J. Bos <roger.bos@gmail.com>
+Description: Forecasting recession using Support Vector Machines (SVM)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Depends: data.table
+Imports: PerformanceAnalytics, e1071
+RoxygenNote: 6.1.1
