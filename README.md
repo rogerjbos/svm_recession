@@ -1,19 +1,17 @@
 ---
 title: "README"
 author: "Roger J Bos"
-date: "11/30/2019"
+date: "12/12/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ### Installation
 
+```
 library(devtools)
 install_github("rogerjbos/svm_recession)
 library(svm.recession)
+```
 
 ### Data and sources
 
@@ -31,7 +29,7 @@ where each of the four independant variables includes the current value plus the
 
 ### Running the example
 
-```
+```{r}
 
 library(svm.recession)
 # load the sample data (should happen automatically -- object named `dat`)
@@ -79,3 +77,8 @@ lines(b1$ans$fwdstate ~ b1$ans$vintage, type='s')
 
 The backtest measures the accuracy of the SVM predictions versus the actual recession markers as determined by the NBER.
 
+From an investment strategy standpoint, we go long the S&P 500 when the recession is not forecasted and switch to cash when recession is forecasted.  This provides a modest outperformance versus a buy and hold strategy.
+
+### References
+
+This paper was modeled after [Nowcasting Recessions using the SVM Machine Learning Algorithm](https://ssrn.com/abstract=3316917) by James, Abu-Mostafa, and Qiao.  Available on SSRN at <https://ssrn.com/abstract=3316917>.
