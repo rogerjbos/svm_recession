@@ -1,19 +1,17 @@
 ---
 title: "README"
-author: "Roger J Bos"
-date: "11/30/2019"
+author: "Roger J Bos, CFA"
+date: "12/12/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ### Installation
 
+```
 library(devtools)
 install_github("rogerjbos/svm_recession)
 library(svm.recession)
+```
 
 ### Data and sources
 
@@ -27,7 +25,7 @@ where each of the four independant variables includes the current value plus the
 * `payems` is total nonfarm employees from [ALFRED](https://alfred.stlouisfed.org/series?seid=PAYEMS).
 * `sp500` is the [S&P 500 monthly closing price](https://www.multpl.com/s-p-500-historical-prices/table/by-month).
 * `yld_curve` is [GS10](https://fred.stlouisfed.org/series/GS10) - [FEDFUNDS](https://fred.stlouisfed.org/series/FEDFUNDS) from [FRED](https://fred.stlouisfed.org).
-* `man_prod` is the Manufacturing Production Index as published by the Institute for Supply Management(https://www.quandl.com/data/ISM-Institute-for-Supply-Management) downloaded from [Quandl](https://www.quandl.com/data/ISM/MAN_PROD-Manufacturing-Production-Index).
+* `man_prod` is the Manufacturing Production Index as published by the [Institute for Supply Management](https://www.quandl.com/data/ISM-Institute-for-Supply-Management) downloaded from [Quandl](https://www.quandl.com/data/ISM/MAN_PROD-Manufacturing-Production-Index).
 
 ### Running the example
 
@@ -79,3 +77,8 @@ lines(b1$ans$fwdstate ~ b1$ans$vintage, type='s')
 
 The backtest measures the accuracy of the SVM predictions versus the actual recession markers as determined by the NBER.
 
+From an investment strategy standpoint, we go long the S&P 500 when the recession is not forecasted and switch to cash when recession is forecasted.  This provides a modest outperformance versus a buy and hold strategy.
+
+### References
+
+This code was inspired by the paper [Nowcasting Recessions using the SVM Machine Learning Algorithm](https://ssrn.com/abstract=3316917) by James, Abu-Mostafa, and Qiao.  Available on SSRN at <https://ssrn.com/abstract=3316917>.
