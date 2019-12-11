@@ -29,7 +29,7 @@ where each of the four independant variables includes the current value plus the
 
 ### Running the example
 
-```
+```{r}
 
 library(svm.recession)
 # load the sample data (should happen automatically -- object named `dat`)
